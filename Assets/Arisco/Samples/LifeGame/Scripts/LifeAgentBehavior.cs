@@ -9,7 +9,6 @@ public class LifeAgentBehavior : ABehavior
 	private bool alive = false;
 	private bool nextAlive;
 
-
 	public bool Alive {
 		get {
 			return alive;
@@ -42,11 +41,6 @@ public class LifeAgentBehavior : ABehavior
 		agents.Remove (this);
 	}
 	
-	public override void Commit ()
-	{
-		Alive = nextAlive;
-	}
-	
 	public override void Step ()	
 	{
 		int aliveNum = agents.Where (x => x.Alive).Count ();
@@ -60,5 +54,10 @@ public class LifeAgentBehavior : ABehavior
 				nextAlive = true;
 			}
 		}
+	}
+	
+	public override void Commit ()
+	{
+		Alive = nextAlive;
 	}
 }

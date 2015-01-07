@@ -39,16 +39,6 @@ public class RandomMoveBehavior : SpeedDirectionBehavior {
 	public override void Commit ()
 	{
 		transform.Translate(d * Speed);
-		LimitedWorld lw = AttachedAgent.World.GetComponent<LimitedWorld>();
-		
-		if(lw){
-			Vector3 max = lw.size + lw.offset;
-			Vector3 min = lw.offset;
-			Bounds b = new Bounds(lw.offset, new Vector3(max.x-min.x, max.y - min.y, max.z-min.z));
-			if(!b.Contains(transform.position)){
-				transform.Translate(-d * Speed);
-			}
-		}
 	}
 
 	void Start(){

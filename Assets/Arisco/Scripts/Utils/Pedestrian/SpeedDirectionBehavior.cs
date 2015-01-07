@@ -6,7 +6,7 @@ using System.Linq;
 public class SpeedDirectionBehavior : ABehavior, ISpeedDirection
 {
 
-	private float speed = 1;
+	public float speed = 1;
 	public float Speed {
 		get {
 			return speed;
@@ -16,7 +16,7 @@ public class SpeedDirectionBehavior : ABehavior, ISpeedDirection
 		}
 	}
 
-	private Vector3 direction = Vector3.forward;
+	public Vector3 direction = Vector3.forward;
 	public Vector3 Direction {
 		set {
 			direction = value;
@@ -35,8 +35,8 @@ public class SpeedDirectionBehavior : ABehavior, ISpeedDirection
 		}
 	}
 
-	public void LookAt(Vector3 target, bool noAngle = false){
-		if(noAngle){
+	public void LookAt(Vector3 target, bool yUp = false){
+		if(yUp){
 			target.y = transform.position.y;
 		}
 		transform.LookAt(target);

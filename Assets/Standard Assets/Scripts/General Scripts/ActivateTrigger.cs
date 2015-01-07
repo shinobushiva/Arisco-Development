@@ -40,17 +40,17 @@ public class ActivateTrigger : MonoBehaviour {
 					}
 					break;
 				case Mode.Activate:
-					targetGameObject.SetActive(true);
+					targetGameObject.active = true;
 					break;
 				case Mode.Enable:
 					if (targetBehaviour != null)
 						targetBehaviour.enabled = true;
 					break;	
 				case Mode.Animate:
-					targetGameObject.GetComponent<Animation>().Play ();
+					targetGameObject.animation.Play ();
 					break;	
 				case Mode.Deactivate:
-					targetGameObject.SetActive(false);
+					targetGameObject.active = false;
 					break;
 			}
 		}

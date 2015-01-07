@@ -76,12 +76,6 @@ public sealed class CellAutomatonWorldRunner : WorldRunner
 		allAgents.Clear ();
 		allAgents.AddRange (registratingAgents);
 		registratingAgents.Clear ();
-		/*
-		foreach (AAgent a in allAgents) {
-			a.World = World;
-			a.Initialize ();
-		}
-		*/
 		
 		World.InitializeBegin ();
 
@@ -90,14 +84,12 @@ public sealed class CellAutomatonWorldRunner : WorldRunner
 		registratingAgents.Clear ();
 		foreach (AAgent a in allAgents) {
 			a.World = World;
-			a.Initialize ();
+			a._Initialize ();
 		}	
 
 		World.InitializeEnd ();
 
 	}
-
-
 
 	void Update ()
 	{
@@ -112,7 +104,7 @@ public sealed class CellAutomatonWorldRunner : WorldRunner
 		} else if (state == State.Stopping) {
 			if (!World.Ended){
 				foreach (AAgent a in World.AllAgents) {
-					a.End ();
+					a._End ();
 				}
 				World.End ();
 				finished = true;
@@ -130,7 +122,7 @@ public sealed class CellAutomatonWorldRunner : WorldRunner
 			
 			World.Begin ();
 			foreach (AAgent a in World.AllAgents) {
-				a.Begin ();
+				a._Begin ();
 			}
 
 			state = State.Running;
@@ -158,23 +150,23 @@ public sealed class CellAutomatonWorldRunner : WorldRunner
 				}
 			
 				foreach (AAgent a in World.AllAgents) {
-					a.Step ();
+					a._Step ();
 				}
 				World.Step ();
 			
 				foreach (AAgent a in World.AllAgents) {
-					a.Commit ();
+					a._Commit ();
 				}
 			
 				List<AAgent> resigningAgentsCopy = new List<AAgent> ();
 				resigningAgentsCopy.AddRange (resigningAgents);
 				// Process disposed agents
 				foreach (AAgent a in resigningAgentsCopy) {
-					a.End ();
+					a._End ();
 				}
 				World.ResignAgents (resigningAgentsCopy);
 				for (int i=0; i<resigningAgentsCopy.Count; i++) {
-					resigningAgentsCopy [i].Dispose ();
+					resigningAgentsCopy [i]._Dispose ();
 				}
 				resigningAgents.Clear ();
 			
@@ -183,8 +175,8 @@ public sealed class CellAutomatonWorldRunner : WorldRunner
 				registratingAgentsCopy.AddRange (registratingAgents);
 				foreach (AAgent a in registratingAgentsCopy) {
 					World.AllAgents.Add (a);
-					a.Initialize ();
-					a.Begin ();
+					a._Initialize ();
+					a._Begin ();
 				}
 				registratingAgents.Clear ();
 				World.Commit ();
@@ -200,7 +192,7 @@ public sealed class CellAutomatonWorldRunner : WorldRunner
 				}
 			} else {
 				foreach (AAgent a in World.AllAgents) {
-					a.End ();
+					a._End ();
 				}
 				World.End ();
 				finished = true;
@@ -234,7 +226,7 @@ public sealed class CellAutomatonWorldRunner : WorldRunner
 	public void Dispose ()
 	{
 		foreach (AAgent a in World.AllAgents) {
-			a.Dispose ();
+			a._Dispose ();
 		}
 		World.Dispose ();
 	}

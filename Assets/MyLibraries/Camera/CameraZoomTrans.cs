@@ -8,7 +8,7 @@ public class CameraZoomTrans : MonoBehaviour
 	private Vector3 mPos;
 	private SwitchableCamera switchCamera;
 	//private SmoothFollow follow;
-	private float damping = 0;
+	//private float damping = 0;
 
 	private Vector3 org;
 
@@ -18,7 +18,7 @@ public class CameraZoomTrans : MonoBehaviour
 	public float zoomSpeed = 10;
 
 	//
-	private bool mouseDown = false;
+	//private bool mouseDown = false;
 	private Vector3 preMousePos;
 
 
@@ -37,7 +37,7 @@ public class CameraZoomTrans : MonoBehaviour
 	{
 
 		if (!switchCamera.isMain){
-			mouseDown = false;
+			//mouseDown = false;
 			transform.position = org;
 			camera.orthographicSize = orgSize;
 			return;
@@ -47,7 +47,7 @@ public class CameraZoomTrans : MonoBehaviour
 			return;
 
 		if(Input.GetMouseButtonDown(0)){
-			mouseDown = true;
+			//mouseDown = true;
 			preMousePos = Input.mousePosition;
 		}
 
@@ -62,7 +62,7 @@ public class CameraZoomTrans : MonoBehaviour
 		}
 
 		if(Input.GetMouseButtonUp(0)){
-			mouseDown = false;
+			//mouseDown = false;
 		}
 			
 		if(Input.GetKey(KeyCode.A)){

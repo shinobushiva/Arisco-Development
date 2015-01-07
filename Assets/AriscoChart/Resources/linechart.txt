@@ -1,0 +1,16 @@
+﻿<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      #libraries_to_load#
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        #chart_data#
+      }
+    </script>
+  </head>
+  <body>
+    #chart_divs#
+  </body>
+</html>

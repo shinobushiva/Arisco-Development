@@ -439,8 +439,20 @@ public class AriscoGUI : SingletonMonoBehaviour<AriscoGUI>
 		}
 	}
 
+	float lastMoveTime;
+	Vector3 lastMousePosition;
+
 	void OnGUI ()
 	{
+		if (Vector3.Distance (Input.mousePosition, lastMousePosition) > 1) {
+			lastMoveTime = Time.time;
+		}
+		lastMousePosition = Input.mousePosition;
+
+		if (Time.time - 1 > lastMoveTime) {
+			return;
+		}
+
 		
 		Matrix4x4 mat = GUI.matrix;
 

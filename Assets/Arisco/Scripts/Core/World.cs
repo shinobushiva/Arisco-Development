@@ -11,8 +11,10 @@ using System.Linq;
 ///@author shiva
 ///
 /// </summary>
+[RequireComponent(typeof(AriscoSystemInializeWorldBehavior))]
 public class World : MonoBehaviour
 {
+    [HideInInspector]
 	public bool timeTicking;
 
 	#if NO_OVERRIDE

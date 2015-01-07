@@ -21,8 +21,7 @@ public class LifeGameWorldBehavior : WorldBehavior
 		
 		for (int i=0; i<num; i++) {
 			for (int j=0; j<num; j++) {
-				AAgent a = CreateAgent (AttachedWorld, lifePrefab);
-				a.transform.position = new Vector3 (i - offset, j - offset, 0);
+                AAgent a = CreateAgent (AttachedWorld, lifePrefab, new Vector3 (i - offset, j - offset, 0));
 			}
 		}
 

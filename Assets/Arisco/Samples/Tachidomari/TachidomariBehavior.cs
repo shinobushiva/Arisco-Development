@@ -10,7 +10,6 @@ public class TachidomariBehavior : SpeedDirectionBehavior {
 
 	public override void Initialize ()
 	{
-		//Position = new Vector3(Rand () * 50-25, 0, Rand() * 50-25); 
 		Direction = AngleToDirection(0, Rand() * 360, 0);
 	}
 
@@ -21,7 +20,6 @@ public class TachidomariBehavior : SpeedDirectionBehavior {
 		}else{
 			Forward (1);
 		}
-
 	}
 
 }

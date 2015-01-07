@@ -7,9 +7,17 @@ public class AgentWorldRun : SingletonMonoBehaviour<AgentWorldRun>
 	
 	public World world;
 	public float duration = 1f;
+    public float Duration {
+        get{
+            return duration;
+        }
+        set{
+            duration = value;
+        }
+    }
+
 	[HideInInspector]
-	public CellAutomatonWorldRunner
-		runner;
+	public CellAutomatonWorldRunner runner;
 	private GameObject worldCopy;
 	
 	void Update ()
@@ -57,8 +65,10 @@ public class AgentWorldRun : SingletonMonoBehaviour<AgentWorldRun>
 		
 		runner.World = world;
 
+		/*
 		if (AriscoChart.Instance)
 			AriscoChart.Instance.Init ();
+		*/
 		
 		AAgent[] agents = world.gameObject.GetComponentsInChildren<AAgent> ();
 		

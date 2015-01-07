@@ -15,7 +15,7 @@ public class GekijoHitoBehavior : SpeedDirectionBehavior {
 
 	public override void Step ()
 	{
-		List<AAgent> list = GetAgentsAroundPosition<AAgent>(AttachedAgent.World, Position, 1);
+        List<GekijoHitoBehavior> list = GetAgentsAroundPosition<GekijoHitoBehavior>(AttachedAgent.World, Position, 1);
 		if(list.Count >= 5){
 			MoveToSpaceCell(5);
 		}

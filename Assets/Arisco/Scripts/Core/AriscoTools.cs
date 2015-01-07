@@ -6,16 +6,24 @@ using System.Linq;
 
 public class AriscoTools : MonoBehaviour
 {
-
-	public AAgent CreateAgent (World world, AAgent agent)
+    public AAgent CreateAgent (World world, AAgent agent, Vector3 pos)
 	{
-		
 		AAgent a = Instantiate (agent) as AAgent;
-		a.transform.parent = world.transform;
+        a.transform.parent = world.transform;
+        a.transform.position = pos;
 		world.RegisterAgent (a);
 		
 		return a;
 	}
+
+    public AAgent CreateAgent (World world, AAgent agent)
+    {
+        return CreateAgent(world, agent, Vector3.zero);
+    }
+
+    public void ResignAgent(World world, AAgent agent){
+        world.ResignAgent(agent);
+    }
 
 	public Vector3 ToGrid(Vector3 pos){
 		pos.x = Mathf.RoundToInt(pos.x);

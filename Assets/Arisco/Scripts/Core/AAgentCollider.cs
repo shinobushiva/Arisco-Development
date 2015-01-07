@@ -9,13 +9,13 @@ using Arisco.Core;
 ///@author shiva
 ///
 ///</summery>
-[RequireComponent(typeof(AAgent))]
 public class AAgentCollider : AComponent
 {
 	void Start ()
 	{
 		Collider c = GetComponent<Collider> ();
-		if (!c) {
+        Collider2D c2d = GetComponent<Collider2D> ();
+		if (!c && !c2d) {
 			Debug.Log ("No Collider is attached!");
 			Destroy (this);
 		}
