@@ -10,36 +10,14 @@ public sealed class AriscoSystem : SingletonMonoBehaviour<AriscoSystem> {
     private static Dictionary<GameObject, Dictionary<Type, AComponent>> componentMap = new Dictionary<GameObject, Dictionary<Type, AComponent>>(); 
     private static Dictionary<Type, List<AComponent>> typeMap = new Dictionary<Type, List<AComponent>>();
 
-    private static List<AAgentField> agentFields = new List<AAgentField>();
-    public static AAgentField[] agentFieldsA = {};
-
-    public static Dictionary<Type, int> typeMaskMap = new Dictionary<Type, int>();
-    private static int maskIdx = 1;
-
-
     public static void Initialize(){
         print("AriscoSystem#Initialize");
         componentMap.Clear();
         mapCount = 1;
-        agentFields.Clear();
-        agentFields.Add(new AAgentField());
-        agentFieldsA = agentFields.ToArray();
-    }
-
-    public int GetTypeMask(Type t){
-        return typeMaskMap [t];
     }
 
     public static void Map(AAgent ag){
         GameObject go = ag.gameObject;
-
-        //Rigidbody r = go.AddComponent<Rigidbody>();
-        //r.isKinematic = true;
-        //r.mass = mapCount++;
-        AAgentField af = new AAgentField();
-        agentFields.Add(af);
-        agentFieldsA = agentFields.ToArray();
-        print(agentFieldsA.Length);
 
         int mask = 0x0; 
         AComponent[] acs = go.GetComponents<AComponent>();
@@ -47,18 +25,8 @@ public sealed class AriscoSystem : SingletonMonoBehaviour<AriscoSystem> {
         {
             Map(ag, ac);
             Type t = ac.GetType();
-            af.map.Add(t, ac);
 
-            if(typeMaskMap.ContainsKey(t)){
-                mask |= typeMaskMap[t];
-            }else{
-                int fm = 1 << maskIdx;
-                maskIdx++;
-                typeMaskMap.Add(t, fm);
-                mask |= fm;
-            }
         }
-        print("mask:"+mask);
         //r.drag = mask;
     }
 

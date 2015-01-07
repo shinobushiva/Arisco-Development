@@ -11,7 +11,7 @@ public class RandomWalkBehavior : SpeedDirectionBehavior {
 	{
         if (excludeRadius > 0)
         {
-            List<RandomWalkBehavior> rbs = GetAgentsAroundPosition<RandomWalkBehavior>(transform.position + Direction, excludeRadius, false, true);
+            List<RandomWalkBehavior> rbs = GetAgentsAroundPosition<RandomWalkBehavior>(transform.position + Direction, excludeRadius, false);
             if (rbs.Count <= 0)
                 Forward(1);
         } else

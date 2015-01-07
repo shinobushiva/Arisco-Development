@@ -74,7 +74,6 @@
      <Compile Include="Assets\Arisco\Scripts\Core\AAgent.cs" />
      <Compile Include="Assets\Arisco\Scripts\Core\AAgentCollider.cs" />
      <Compile Include="Assets\Arisco\Scripts\Core\AAgentEventAdapter.cs" />
-     <Compile Include="Assets\Arisco\Scripts\Core\AAgentField.cs" />
      <Compile Include="Assets\Arisco\Scripts\Core\ABehavior.cs" />
      <Compile Include="Assets\Arisco\Scripts\Core\AComponent.cs" />
      <Compile Include="Assets\Arisco\Scripts\Core\AgentWorldRun.cs" />

@@ -24,7 +24,7 @@ public class ArmedBehavior : ABehavior {
     public override void Commit(){
         if (coolTime-- <= 0)
         {
-            List<ZombieBehavior> zombies = GetAgentsAroundPosition<ZombieBehavior>(transform.position, radius, false, true);
+            List<ZombieBehavior> zombies = GetAgentsAroundPosition<ZombieBehavior>(transform.position, radius, false);
             if (zombies.Count > 0)
             {
                 zombies [Random.Range(0, zombies.Count - 1)].GetComponent<ZombieStopBehavior>().stopTime = stopTime;

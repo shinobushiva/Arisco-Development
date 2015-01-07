@@ -54,7 +54,7 @@ public class HumanBehavior : ABehavior
             cb.AgentColor = defaultColor;
         } 
 
-        List<ZombieBehavior> zombies = GetAgentsAroundPosition<ZombieBehavior> (transform.position, radius, false, true).
+        List<ZombieBehavior> zombies = GetAgentsAroundPosition<ZombieBehavior> (transform.position, radius, false).
             OrderBy(x=>Vector3.Distance(x.transform.position, transform.position)).ToList();
         if(zombies.Count > 0){
             sp.LookAt(zombies[0].transform.position, true);
